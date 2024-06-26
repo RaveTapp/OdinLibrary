@@ -1,0 +1,59 @@
+* {
+    margin: 0;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+body {
+    background-color: beige;
+}
+
+.books {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    
+}
+
+ul {
+    list-style-type: none;
+    
+    padding: 20px;
+    border: 3px solid #0071c5;
+    border-radius: 12px;
+}
+
+.button {
+    display: flex;
+    justify-content: center;
+    margin: 20px 0;
+}
+
+.button #new-book {
+    background-color: rgb(240, 149, 88);
+    padding: 12px;
+    border-radius: 12px;
+    border: none;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    
+}
+
+.hidden {
+    visibility: hidden;
+}
+
+form > div {
+    padding: 20px;
+    border: 3px solid #0071c5;
+    border-radius: 12px;
+}
+
+form div div {
+    margin: 8px;
+    
+}

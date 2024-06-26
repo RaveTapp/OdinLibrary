@@ -25,7 +25,7 @@ function addBookToLibrary(event) {
 
     let radio = document.querySelector("input[name='read']");
     isRead = radio.checked ? true : false;
-    
+
     let newBook = new Book(title, author, pages, isRead);
 
     myLibrary.push(newBook);
@@ -58,3 +58,4 @@ function updateList(){
 }
 
 
+updateList();
