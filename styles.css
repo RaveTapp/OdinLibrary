@@ -9,9 +9,8 @@ body {
 
 .books {
     display: flex;
-    flex-direction: column;
-    align-items: center;
-    
+    justify-content: center;
+    margin-top: 20px;
 }
 
 ul {
@@ -20,6 +19,12 @@ ul {
     padding: 20px;
     border: 3px solid #0071c5;
     border-radius: 12px;
+}
+
+.books ul div {
+    display: flex;
+    gap: 10px;
+    margin: 6px 0;
 }
 
 .button {

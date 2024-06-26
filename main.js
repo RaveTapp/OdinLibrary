@@ -19,7 +19,7 @@ function Book(title, author, pages, isRead = false){
     }
 }
 
-document.querySelector("button[type='submit']").addEventListener("click", addBookToLibrary, false);
+document.querySelector("button[type='submit']").addEventListener("click", addBookToLibrary);
 
 function addBookToLibrary(event) {
     let title = document.querySelector("#title").value;
@@ -35,7 +35,7 @@ function addBookToLibrary(event) {
     updateList();
     event.preventDefault();
     document.querySelector("form").reset();
-    
+
 }
 
 
@@ -55,15 +55,32 @@ let list = document.querySelector(".books ul");
 function updateList(){
     list.innerHTML = "";
     for(let i = 0; i < myLibrary.length; i++){
+        let div = document.createElement("div");
         let li = document.createElement("li");
         li.textContent = myLibrary[i].info();
-        list.appendChild(li);
+        li.setAttribute("data-index", i);
+        
+
+        let btn = document.createElement("button");
+        btn.textContent = "Delete"
+        btn.setAttribute("data-index", i);
+        btn.setAttribute("class", "delete");
+
+        btn.addEventListener("click", () => {
+            let index = btn.getAttribute("data-index");
+            myLibrary.splice(index, 1);
+            updateList();
+        });
+
+        div.appendChild(li);
+        div.appendChild(btn);
+
+        list.appendChild(div);
     }
 }
 
 
 updateList();
-
 
 newBookBtn.addEventListener("click", () => {
     form.classList.toggle("hidden");
