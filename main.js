@@ -1,5 +1,8 @@
 let myLibrary = [];
 
+let newBookBtn = document.querySelector("#new-book")
+let form = document.querySelector("form");
+
 function Book(title, author, pages, isRead = false){
     this.title = title;
     this.author = author;
@@ -32,6 +35,7 @@ function addBookToLibrary(event) {
     updateList();
     event.preventDefault();
     document.querySelector("form").reset();
+    
 }
 
 
@@ -59,3 +63,8 @@ function updateList(){
 
 
 updateList();
+
+
+newBookBtn.addEventListener("click", () => {
+    form.classList.toggle("hidden");
+});

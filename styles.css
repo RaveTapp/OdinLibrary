@@ -33,6 +33,11 @@ ul {
     padding: 12px;
     border-radius: 12px;
     border: none;
+    box-shadow: 2px 2px 5px black;
+}
+
+#new-book:hover {
+    box-shadow: 4px 4px 10px black;
 }
 
 form {
