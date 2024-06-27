@@ -10,10 +10,10 @@ function Book(title, author, pages, isRead = false){
     this.isRead = isRead;
     this.info = function () {
         let info = `${this.title} by ${this.author}, ${pages} pages`;
-        if(isRead){
+        if(this.isRead){
             info += ", already read";
         } else {
-            info += ", not read yet"
+            info += ", not read yet";
         }
         return info;
     }
@@ -72,7 +72,23 @@ function updateList(){
             updateList();
         });
 
+        let toggleRead = document.createElement("button");
+        toggleRead.textContent = "read book";
+        toggleRead.setAttribute("data-index", i);
+        toggleRead.setAttribute("class", "readBtn");
+
+        toggleRead.addEventListener("click", () => {
+            let index = toggleRead.getAttribute("data-index");
+            if(myLibrary[index].isRead){
+                myLibrary[index].isRead = false;
+            } else {
+                myLibrary[index].isRead = true;
+            }
+            updateList();
+        });
+
         div.appendChild(li);
+        div.appendChild(toggleRead);
         div.appendChild(btn);
 
         list.appendChild(div);
