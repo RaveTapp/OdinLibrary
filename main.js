@@ -19,8 +19,6 @@ function Book(title, author, pages, isRead = false){
     }
 }
 
-document.querySelector("button[type='submit']").addEventListener("click", addBookToLibrary);
-
 function addBookToLibrary(event) {
     let title = document.querySelector("#title").value;
     let author = document.querySelector("#author").value;
@@ -38,28 +36,15 @@ function addBookToLibrary(event) {
 
 }
 
-
-
-/*Test*/
-//addBookToLibrary();
-let theHobbit = new Book("The Hobbit", "J. R. R. Tolkien", 295, true);
-let theHobbit69 = new Book("The Hobbit 69", "J. R. R. Tolkien", 296, false);
-
-myLibrary.push(theHobbit);
-myLibrary.push(theHobbit69);
-/*console.log(theHobbit.info());
-console.log(myLibrary[0].info());*/
-
-
 let list = document.querySelector(".books ul");
 function updateList(){
     list.innerHTML = "";
     for(let i = 0; i < myLibrary.length; i++){
-        let div = document.createElement("div");
         let li = document.createElement("li");
-        li.textContent = myLibrary[i].info();
-        li.setAttribute("data-index", i);
-        
+
+        let p = document.createElement("p");
+        p.textContent = myLibrary[i].info();
+        p.setAttribute("data-index", i);
 
         let btn = document.createElement("button");
         btn.textContent = "Delete"
@@ -87,16 +72,25 @@ function updateList(){
             updateList();
         });
 
-        div.appendChild(li);
-        div.appendChild(toggleRead);
-        div.appendChild(btn);
+        li.appendChild(p);
+        li.appendChild(toggleRead);
+        li.appendChild(btn);
 
-        list.appendChild(div);
+        list.appendChild(li);
     }
 }
 
+/*Test
+let theHobbit = new Book("The Hobbit", "J. R. R. Tolkien", 295, true);
+let theHobbit69 = new Book("The Hobbit 69", "J. R. R. Tolkien", 296, false);
+
+myLibrary.push(theHobbit);
+myLibrary.push(theHobbit69);*/
 
 updateList();
+
+
+document.querySelector("button[type='submit']").addEventListener("click", addBookToLibrary);
 
 newBookBtn.addEventListener("click", () => {
     form.classList.toggle("hidden");
