@@ -3,22 +3,6 @@ let myLibrary = [];
 let newBookBtn = document.querySelector("#new-book")
 let form = document.querySelector("form");
 
-/*function Book(title, author, pages, isRead = false){
-    this.title = title;
-    this.author = author;
-    this.pages = pages;
-    this.isRead = isRead;
-    this.info = function () {
-        let info = `${this.title} by ${this.author}, ${pages} pages`;
-        if(this.isRead){
-            info += ", already read";
-        } else {
-            info += ", not read yet";
-        }
-        return info;
-    }
-}*/
-
 class Book {
     title
     author
