@@ -32,31 +32,14 @@ class Book {
     }
 
     get info() {
-        let info = `${this.title} by ${this.author}, ${pages} pages`;
+        let infoStr = `${this.title} by ${this.author}, ${this.pages} pages`;
         if(this.isRead){
-            info += ", already read";
+            infoStr += ", already read";
         } else {
-            info += ", not read yet";
+            infoStr += ", not read yet";
         }
-        return info;
+        return infoStr;
     }
-}
-
-function addBookToLibrary(event) {
-    let title = document.querySelector("#title").value;
-    let author = document.querySelector("#author").value;
-    let pages = document.querySelector("#pages").value;
-
-    let radio = document.querySelector("input[name='read']");
-    isRead = radio.checked ? true : false;
-
-    let newBook = new Book(title, author, pages, isRead);
-
-    myLibrary.push(newBook);
-    updateList();
-    event.preventDefault();
-    document.querySelector("form").reset();
-
 }
 
 let list = document.querySelector(".books ul");
@@ -66,7 +49,7 @@ function updateList(){
         let li = document.createElement("li");
 
         let p = document.createElement("p");
-        p.textContent = myLibrary[i].info();
+        p.textContent = myLibrary[i].info;
         p.setAttribute("data-index", i);
 
         let btn = document.createElement("button");
@@ -103,15 +86,27 @@ function updateList(){
     }
 }
 
-/*Test
-let theHobbit = new Book("The Hobbit", "J. R. R. Tolkien", 295, true);
-let theHobbit69 = new Book("The Hobbit 69", "J. R. R. Tolkien", 296, false);
-
-myLibrary.push(theHobbit);
-myLibrary.push(theHobbit69);*/
-
 updateList();
 
+
+function addBookToLibrary(event) {
+    event.preventDefault();
+
+    let title = document.querySelector("#title").value;
+    let author = document.querySelector("#author").value;
+    let pages = document.querySelector("#pages").value;
+
+    let radio = document.querySelector("input[name='read']");
+    isRead = radio.checked ? true : false;
+
+    let newBook = new Book(title, author, pages, isRead);
+
+    myLibrary.push(newBook);
+    updateList();
+    
+    document.querySelector("form").reset();
+
+}
 
 document.querySelector("button[type='submit']").addEventListener("click", addBookToLibrary);
 
